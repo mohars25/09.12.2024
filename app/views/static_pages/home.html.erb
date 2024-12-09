@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Gossip Project</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all' %> <!-- Assure-toi que ce lien est bien présent -->
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Bienvenue sur The Gossip Project</h1>
+      <nav>
+        <ul>
+          <li><%= link_to 'Accueil', root_path %></li>
+          <li><%= link_to 'Équipe', team_path %></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="gossip-section">
+      <h2>Les derniers potins</h2>
+      <div class="gossips">
+        <% @gossips.each do |gossip| %>
+          <div class="gossip-card">
+            <h3><%= gossip.title %></h3>
+            <p><%= gossip.content.truncate(100) %></p>
+            <%= link_to 'Lire plus...', gossip_path(gossip), class: 'btn' %>
+          </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

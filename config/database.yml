@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  port: 5432
+  pool: 5
+  username: postgres    # Utilisateur PostgreSQL
+  password: momo        # Mot de passe PostgreSQL
+
+development:
+  <<: *default
+  database: the_gossip_project_development
+
+test:
+  <<: *default
+  database: the_gossip_project_test
+
+production:
+  <<: *default
+  database: the_gossip_project_production
+  username: the_gossip_project
+  password: <%= ENV['GOSSIP_PROJECT_DATABASE_PASSWORD'] %>
