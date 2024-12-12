@@ -1,55 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>The Gossip Project</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #007bff;
+    .btn-facebook {
+      background-color: #3b5998;
       color: white;
-      padding: 1em 0;
-      text-align: center;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
     }
-    main {
-      padding: 2em;
-      text-align: center;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    p {
-      font-size: 1.2em;
-    }
-    footer {
-      background-color: #007bff;
-      color: white;
-      padding: 1em 0;
-      text-align: center;
+
+    .btn-facebook:hover {
+      background-color: #2d4373;
     }
   </style>
 </head>
-<body>
-  <header>
-    <h1>The Gossip Project</h1>
-    <nav>
-      <a href="/team" style="color: white; margin: 0 10px;">Équipe</a>
-      <a href="/contact" style="color: white; margin: 0 10px;">Contact</a>
-    </nav>
-  </header>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">The Gossip Project</a>
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/team">Équipe</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        </ul>
+        <% if user_signed_in? %>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to "Se déconnecter", session_path(current_user), method: :delete, class: "btn btn-danger" %>
+            </li>
+          </ul>
+        <% else %>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to "Se connecter", new_session_path, class: "btn btn-primary" %>
+            </li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+</header>
 
-  <main>
-    <h2>Bienvenue sur The Gossip Project !</h2>
-    <p>Créez, lisez et interagissez avec des gossips passionnants.</p>
-    <p>Rejoignez notre communauté et partagez vos histoires !</p>
-  </main>
-
-  <footer>
-    <p>&copy; 2024 The Gossip Project. Tous droits réservés.</p>
-  </footer>
-</body>
-</html>
+<div class="text-center mt-5">
+  <h1>Bienvenue sur The Gossip Project !</h1>
+  <p>Créez, lisez et interagissez avec des gossips passionnants.</p>
+  <p>Rejoignez notre communauté et partagez vos histoires !</p>
+  
+  <% if user_signed_in? %>
+    <%= link_to "Se déconnecter", session_path(current_user), method: :delete, class: "btn btn-facebook" %>
+  <% else %>
+    <%= link_to "Se connecter", new_session_path, class: "btn btn-facebook" %>
+  <% end %>
+</div>

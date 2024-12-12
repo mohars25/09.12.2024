@@ -1,108 +1,12 @@
-/* Reset les marges et le padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Styles globaux */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-    padding: 20px;
-  }
-  
-  /* Conteneur principal */
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  /* En-tête */
-  .header {
-    background-color: #333;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .header h1 {
-    font-size: 2.5rem;
-  }
-  
-  .header nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .header nav ul li {
-    display: inline;
-  }
-  
-  .header nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 5px 10px;
-  }
-  
-  .header nav ul li a:hover {
-    background-color: #555;
-    border-radius: 5px;
-  }
-  
-  /* Section des potins */
-  .gossip-section {
-    margin-top: 30px;
-    text-align: center;
-  }
-  
-  .gossip-section h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .gossips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-  }
-  
-  .gossip-card {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 20px;
+.gossip-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    background-color: #d32929;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 280px;
-    text-align: left;
   }
-  
-  .gossip-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-  }
-  
-  .gossip-card p {
-    font-size: 1rem;
-    color: #555;
-  }
-  
-  .gossip-card .btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  
-  .gossip-card .btn:hover {
-    background-color: #0056b3;
-  }
-  
+}

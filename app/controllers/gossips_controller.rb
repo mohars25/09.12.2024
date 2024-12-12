@@ -14,6 +14,10 @@ class GossipsController < ApplicationController
     end
   end
 
+  def index
+    @gossips = Gossip.all
+  end
+
   def edit
     @gossip = Gossip.find(params[:id])
     authorize_user!(@gossip)
