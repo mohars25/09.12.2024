@@ -1,14 +1,13 @@
-<h1>Les potins</h1>
-<div class="row">
-  <% @gossips.each do |gossip| %>
-    <div class="col-md-4">
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title"><%= gossip.title %></h5>
-          <p class="card-text">Par <%= gossip.author.first_name %></p>
-          <a href="<%= gossip_path(gossip) %>" class="btn btn-primary">Voir plus</a>
-        </div>
-      </div>
-    </div>
-  <% end %>
-</div>
+<h1>Index des Potins</h1>
+
+<% @gossips.each do |gossip| %>
+  <div>
+    <h2><%= link_to gossip.title, gossip_path(gossip) %></h2>
+    <p><%= truncate(gossip.content, length: 100) %></p>
+    <p>Publié par : <%= link_to gossip.author.name, user_path(gossip.author) %></p>
+    <p>Ville : <%= link_to gossip.author.city.name, city_path(gossip.author.city) %></p>
+    <%= link_to 'Éditer', edit_gossip_path(gossip) %> | 
+    <%= link_to 'Supprimer', gossip_path(gossip), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+  </div>
+<% end %>
+

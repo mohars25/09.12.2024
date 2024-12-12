@@ -1,0 +1,25 @@
+<%= form_with(model: @gossip, local: true) do |form| %>
+    <div>
+      <%= form.label :title %>
+      <%= form.text_field :title %>
+    </div>
+  
+    <div>
+      <%= form.label :content %>
+      <%= form.text_area :content %>
+    </div>
+  
+    <%= form.submit "Créer le potin" %>
+  <% end %>
+  
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  

@@ -1,3 +1,6 @@
-<h1>Profil de <%= @user.first_name %></h1>
+<h1><%= @user.name %></h1>
+<p>Prénom : <%= @user.first_name %></p>
+<p>Description : <%= @user.description %></p>
 <p>Email : <%= @user.email %></p>
-<p>Ville : <%= @user.city.name %></p>
+<p>Âge : <%= @user.age %></p>
+<p>Ville : <%= link_to @user.city.name, city_path(@user.city) %></p>

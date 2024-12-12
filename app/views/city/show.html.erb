@@ -1,0 +1,7 @@
+<h1><%= @city.name %></h1>
+<p>Nombre de potins : <%= @gossips.count %></p>
+<ul>
+  <% @gossips.each do |gossip| %>
+    <li><%= link_to gossip.title, gossip_path(gossip) %></li>
+  <% end %>
+</ul>

@@ -1,4 +1,14 @@
 <h1><%= @gossip.title %></h1>
 <p><%= @gossip.content %></p>
-<p>Auteur : <%= link_to @gossip.author.first_name, user_path(@gossip.author) %></p>
-<p>Créé le : <%= @gossip.created_at.strftime('%d/%m/%Y') %></p>
+<p>Publié par : <%= link_to @gossip.author.name, user_path(@gossip.author) %></p>
+<p>Ville : <%= link_to @gossip.author.city.name, city_path(@gossip.author.city) %></p>
+
+<%= link_to 'Modifier', edit_gossip_path(@gossip) %> |
+<%= link_to 'Supprimer', gossip_path(@gossip), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+<h1><%= @gossip.title %></h1>
+<p><%= @gossip.content %></p>
+<p>Publié par : <%= link_to @gossip.author.name, user_path(@gossip.author) %></p>
+<p>Ville : <%= link_to @gossip.author.city.name, city_path(@gossip.author.city) %></p>
+
+<%= link_to 'Modifier', edit_gossip_path(@gossip) %> |
+<%= link_to 'Supprimer', gossip_path(@gossip), method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>

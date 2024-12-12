@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'  # Assure-toi que la route de la page d'accueil est bien définie ici
+  root 'static_pages#home'
   get '/team', to: 'static_pages#team'
   get '/contact', to: 'static_pages#contact'
-  get '/welcome/:first_name', to: 'static_pages#welcome'
-  resources :gossips, only: [:index, :show]
-  resources :users, only: [:show]
+  resources :gossips do
+    resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
+  end
+  resources :users, only: [:new, :create, :edit, :update, :show]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :cities, only: :show
 end
